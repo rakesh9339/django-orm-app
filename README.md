@@ -18,12 +18,42 @@ Include your ER diagram here
 Write your own steps
 
 ## PROGRAM
+```py
+from django.db import models
+from django.contrib import admin
+# Create your models here.
 
-Include your code here
+class Student (models.Model):
+    referencenumber=models.CharField(primary_key=True,max_length=20,help_text="reference number")
+    name=models.CharField(max_length=100)
+    age=models.IntegerField()
+    email=models.EmailField()
+    phone=models.IntegerField()
+    
+
+class StudentAdmin(admin.ModelAdmin):
+    list_display=('referencenumber','name','age','email','phone')
+```
+```py
+from django.contrib import admin
+from .models import Student,StudentAdmin
+# Register your models here.
+admin.site.register(Student,StudentAdmin)
+```
+
+
 
 ## OUTPUT
 
-Include the screenshot of your admin page.
+### serveroutput:
+![serveroutput](serverout.png)
+
+### clientoutput:
+![clientoutput](studentlist.png)
+
+### primarykey:
+![primarykey](primarykey.png)
+
 
 
 ## RESULT
